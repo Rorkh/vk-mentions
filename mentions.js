@@ -1,6 +1,8 @@
 function initialize() {
     function script() {
         if (!document.getElementsByClassName("page_name")[0]) { return; }
+        if (document.getElementById("mentions-link")) { return; }
+        
         var regex = /id=([0-9]+)/;
 
         var link = document.querySelector(".page_counter")
@@ -9,6 +11,7 @@ function initialize() {
         var small = document.createElement("small");
 
         var elem = document.createElement("a");
+            elem.id = "mentions-link";
             elem.href = '/feed?obj='+id+'&q=&section=mentions'
         var elemText = document.createTextNode(" [m]");
         elem.appendChild(elemText);
