@@ -6,14 +6,22 @@ function initialize() {
         var regex = /id=([0-9]+)/;
 
         var link = document.querySelector(".page_counter")
-        var id;
+        var id, match, onclickmatch;
 
-        var match = link.href.match(regex);
+        if (link) {
+            var match = link.href.match(regex);
+            var onclickmatch = link.attributes.onclick.value.match(/event, ([0-9]+)/);
+        }
+        
+        var call = document.querySelector(".PageActionCell");
+
         if (match) {
             id = match[1];
-        } else {
-            regex = 
-            id = link.attributes.onclick.value.match(/event, ([0-9]+)/)[1];
+        } else if (onclickmatch) {
+            id = onclickmatch[1];
+        } else if (call) {
+            var data = JSON.parse(call.getAttribute("data-conversation"));
+            id = data[0].peerId;
         }
 
         var small = document.createElement("small");
