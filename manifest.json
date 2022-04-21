@@ -1,0 +1,16 @@
+{
+
+  "manifest_version": 2,
+  "name": "VK Mentions",
+  "version": "1.0",
+
+  "description": "Позволяет посмотреть упоминания пользователя.",
+
+  "content_scripts": [
+    {
+      "matches": ["*://vk.com/*"],
+      "js": ["mentions.js"]
+    }
+  ]
+
+}
