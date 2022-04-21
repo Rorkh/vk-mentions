@@ -6,7 +6,15 @@ function initialize() {
         var regex = /id=([0-9]+)/;
 
         var link = document.querySelector(".page_counter")
-        var id = link.href.match(regex)[1];
+        var id;
+
+        var match = link.href.match(regex);
+        if (match) {
+            id = match[1];
+        } else {
+            regex = 
+            id = link.attributes.onclick.value.match(/event, ([0-9]+)/)[1];
+        }
 
         var small = document.createElement("small");
 
@@ -34,7 +42,7 @@ function initialize() {
       document.querySelector('body'),
       {
         childList: true,
-        subtree: true
+        subtree: true,
       });
 
   function inject(fn) {
